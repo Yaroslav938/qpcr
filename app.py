@@ -822,11 +822,11 @@ with tab_experiment:
                     st.success("Расчёт завершён успешно!")
                     
                     st.markdown("#### Итоговая таблица результатов")
-                    st.dataframe(
+                                        st.dataframe(
                         final_table.style.format({
                             "Regr_b": "{:.3f}", "ΔCt_mean": "{:.2f}", "ΔCt_sd": "{:.2f}",
                             "ΔΔCt": "{:.2f}", "Fold_Change": "{:.3f}", "Log2_FC": "{:.2f}", "P_value": "{:.4f}"
-                        }).applymap(
+                        }).map(
                             lambda v: 'background-color: lightgreen' if isinstance(v, float) and v < 0.05 else '', 
                             subset=['P_value']
                         ),
@@ -940,7 +940,7 @@ with tab_multi:
                     final_stats_m.style.format({
                         "Regr_b": "{:.3f}", "ΔCt_mean": "{:.2f}", "ΔCt_sd": "{:.2f}",
                         "ΔΔCt": "{:.2f}", "Fold_Change": "{:.3f}", "Log2_FC": "{:.2f}", "P_value": "{:.4f}"
-                    }).applymap(
+                    }).map(
                         lambda v: 'background-color: lightgreen' if isinstance(v, float) and v < 0.05 else '', 
                         subset=['P_value']
                     ),
